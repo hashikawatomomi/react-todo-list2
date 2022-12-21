@@ -126,13 +126,14 @@ const TodoList = () => {
       {isEditable ? (
       <div>
         <input 
+        className='newTodoTitle'
         type='text' 
         label='新しいタイトル'
         value={newTitle}
         onChange={handleEditFormChange}
         />
-        <button onClick={handleEditTodo}>編集を保存</button>
-        <button onClick={handleCloseEditForm}>キャンセル</button>
+        <button className='keepEditButton' onClick={handleEditTodo}>編集を保存</button>
+        <button className='cancelButton' onClick={handleCloseEditForm}>キャンセル</button>
       </div>
     ) : (
       <div>
@@ -154,7 +155,7 @@ const TodoList = () => {
           onChange={(e) => setFilter(e.target.value)}
            >
             {filterOptions.map(({ value, label }) => (
-            <option value={value}>{label}</option>
+            <option key={value} value={value}>{label}</option>
             ))}
           </select>
         </>

@@ -65,6 +65,20 @@ button:hover {
   color: rgb(81, 197, 247);
 }
 
+.keepEditButton {
+  padding: 8px;
+  margin: 5px;
+  background-color: rgb(250, 245, 100);
+  color: rgb(81, 197, 247);
+}
+
+.cancelButton {
+  padding: 8px;
+  margin: 5px;
+  background-color: rgb(250, 245, 100);
+  color: rgb(81, 197, 247);
+}
+
 .addTodoButton {
   margin-top: 10px;
   margin-left: 20px;
@@ -87,8 +101,18 @@ select, option {
   font-size: 16px;
   outline: none;
   appearance: none;
-  border-radius: 0;
 }
+
+.newTodoTitle {
+  width: 50%;
+  box-sizing: border-box;
+  border: solid 1px rgb(136, 134, 134);
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+  appearance: none;
+}
+
 
 .userEmail {
   padding-top: 80px;
