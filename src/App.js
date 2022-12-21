@@ -1,5 +1,7 @@
 import ReactDOM from 'react-dom'
 import React, { useEffect, useState } from 'react'
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp.js';
 
 const App = () => {
 
@@ -100,6 +102,9 @@ const App = () => {
 
   return (
     <>
+    <div style={{ margin: '2em' }}>
+      <SignUp />
+    </div>
     {isEditable ? (
       <div>
         <input 
