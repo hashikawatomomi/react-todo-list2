@@ -1,42 +1,72 @@
-import React, { useRef, useState } from 'react';
-import { auth } from '..firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
+import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { Link, Navigate } from 'react-router-dom';
+import { auth } from '../firebase';
 
 const SignUp = () => {
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const { email, password } = event.target.elements;
-    createUserWithEmailAndPassword(auth, email.value, password.value);
+  const [signUpEmail, setSignUpEmail] = useState('');
+  const [signUpPassword, setSignUpPassword] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await createUserWithEmailAndPassword(
+        auth,
+        signUpEmail,
+        signUpPassword
+      );
+    } catch(error) {
+      alert("正しく入力してください");
+    }
   };
 
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+  }, []);
+
+
   return (
-    <div>
-      <h1>ユーザー登録</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">メールアドレス</label>
-          <input 
-          id="email"
-          name="email" 
-          type="email" 
-          placeholder="email" 
-          />
-        </div>
-        <div>
-          <label htmlFor="password">パスワード</label>
-          <input 
-          id="password"
-          name="password" 
-          type="password" 
-          placeholder='password'
-          />
-        </div>
-        <div>
-          <button>登録</button>
-        </div>
-      </form>
-    </div>
+    <>
+      {user ? (
+        <Navigate to={`/`} />
+      ) : (
+        <>
+        <h1>新規登録</h1>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>メールアドレス</label>
+            <input 
+            name="email" 
+            type="email" 
+            placeholder="email" 
+            value={signUpEmail}
+            onChange={(e) => setSignUpEmail(e.target.value)}
+            />
+          </div>
+          <div>
+            <label>パスワード</label>
+            <input 
+            name="password" 
+            type="password" 
+            placeholder='password'
+            value={signUpPassword}
+            onChange={(e) => setSignUpPassword(e.target.value)}
+            />
+          </div>
+            <button>
+              SignUp
+              </button>
+            <p>サインインは<Link to={`/signIn`}>こちら</Link></p>
+        </form>
+      </>
+      )}
+    </> 
   )
 }
 

@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: grid;
+  row-gap: 30px;
+  width: 84%;
+  max-width: 640px;
+  margin: 60px auto;
+}
+
+.container h1 {
+  justify-self: center;
+}
+
+.container p {
+  justify-self: center;
+}
+
+form {
+  display: grid;
+  row-gap: 30px;
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+  border: solid 1px #ddd;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+  appearance: none;
+  border-radius: 0;
+  margin: 5px;
+}
+
+button {
+  justify-self: center;
+  border: none;
+  background-color: #fbb1e5;
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 15px;
+}
+
+button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.EditButton {
+  padding: 8px;
+  margin-left: 5px;
+  background-color: rgb(250, 245, 100);
+  color: rgb(81, 197, 247);
+}
+
+.deleteButton {
+  padding: 8px;
+  margin: 5px;
+  background-color: rgb(250, 245, 100);
+  color: rgb(81, 197, 247);
+}
+
+.addTodoButton {
+  margin-top: 10px;
+  margin-left: 20px;
+  background-color: rgb(250, 245, 100);
+  color: rgb(81, 197, 247);
+}
+
+select, option {
+  width: 15%;
+  border: 2px solid rgb(153, 158, 159);
+  margin: 4px;
+  padding: 2px;
+}
+
+.todoTitle {
+  width: 50%;
+  box-sizing: border-box;
+  border: solid 1px rgb(136, 134, 134);
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+  appearance: none;
+  border-radius: 0;
+}
+
+.userEmail {
+  padding-top: 80px;
+}
