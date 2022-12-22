@@ -101,6 +101,7 @@ select, option {
   font-size: 16px;
   outline: none;
   appearance: none;
+  justify-self: center;
 }
 
 .newTodoTitle {

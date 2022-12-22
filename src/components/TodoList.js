@@ -1,9 +1,14 @@
 import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { collection, addDoc } from "firebase/firestore"; 
 import React, { useEffect, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
+import { db } from '../firebase.js';
 
 const TodoList = () => {
+
+  const [todoContent, setTodoContent] = useState([]);
+
 
   const [user, setUser] = useState('');
 
@@ -175,6 +180,13 @@ const TodoList = () => {
             <button className='deleteButton' onClick={() => handleDeleteTodo(todo)}>削除</button>
           </li>
         ))}
+        <div>
+          {todoContent.map(({ id, text }) => {
+            <div key={id}>
+              <p>{text}</p>
+            </div>
+          })}
+        </div>
       </ul>
       {!loading && (
         <>
